@@ -1,0 +1,19 @@
+name: HCL OneTest API
+
+on: workflow_dispatch
+
+jobs:
+    API-Action:
+        runs-on: self-hosted
+        name: HCL OneTest API
+        steps:
+         - name: HCL OneTest API
+           uses: anuraag-k/APITestAction@main
+           with:
+            configType: 
+            productPath: 
+            projectDir: 
+            projectName: 
+            environment: 
+            tests: 
+            junitDir: 
