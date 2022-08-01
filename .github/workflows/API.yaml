@@ -11,7 +11,7 @@ jobs:
            uses: anuraag-k/APITestAction@main
            with:
             productPath: C:\Program Files\HCL\OneTest-API
-            projectDir: D:\HCL\api\Project2
+            projectDir: 
             projectName: Project2.ghp
             environment: LP1-AP-51760790
             tests: 
