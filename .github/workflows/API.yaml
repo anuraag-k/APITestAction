@@ -16,4 +16,4 @@ jobs:
             projectName: Project2.ghp
             environment: LP1-AP-51760790
             tests: Test1
-            junitDir: 
+            junitDir: D:\reports
