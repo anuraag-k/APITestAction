@@ -8967,7 +8967,7 @@ const main = async () => {
             const projectdir = core.getInput('projectDir', true);
             var projectname = core.getInput('projectName', true);
             const environment = core.getInput('environment', true);
-            const tests = core.getInput('tests', true);
+            var tests = core.getInput('tests', true);
 
             if(!projectname.includes('.ghp')){
                 projectname = projectname+'.ghp';
