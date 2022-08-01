@@ -16,3 +16,4 @@ jobs:
             environment: LP1-AP-51760790
             tests: Test1
             junitDir: D:\reports
+            parameterFile: ‪C:\Users\anuraag.k\Downloads\api.txt
