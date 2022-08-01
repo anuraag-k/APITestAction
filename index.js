@@ -13,7 +13,7 @@ const main = async () => {
         //API settings
 		var script = '';
         const productpath = core.getInput('productPath', true);
-		const paramfile = core.getInput('parameterfile', false);
+		const paramfile = core.getInput('parameterFile', false);
 		
 		if (paramfile) {
             script = 'cd ' + '"'+productpath+'"' + '\n'
