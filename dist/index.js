@@ -8949,70 +8949,69 @@ const fs = __nccwpck_require__(7147);
 
 const main = async () => {
     try {
-       /*
-        HCL OneTest API parameters.
-        */
-        //API settings
-		var script = '';
+        /*
+         HCL OneTest API parameters.
+         */
+        var script = '';
         const productpath = core.getInput('productPath', true);
-		const paramfile = core.getInput('parameterFile', false);
-		
-		if (paramfile) {
-            script = 'cd ' + '"'+productpath+'"' + '\n'
-            + './RunTests' 
-            + ' -parameterFile ' + '"' + paramfile + '"'
-		}
- 
+        const paramfile = core.getInput('parameterFile', false);
+
+        if (paramfile) {
+            script = 'cd ' + '"' + productpath + '"' + '\n'
+                + './RunTests'
+                + ' -parameterFile ' + '"' + paramfile + '"'
+        }
+
         else {
             const projectdir = core.getInput('projectDir', true);
             var projectname = core.getInput('projectName', true);
             const environment = core.getInput('environment', true);
             var tests = core.getInput('tests', true);
 
-            if(!projectname.includes('.ghp')){
-                projectname = projectname+'.ghp';
+            if (!projectname.includes('.ghp')) {
+                projectname = projectname + '.ghp';
             }
 
-            script = 'cd ' + '"'+productpath+'"' + '\n'
-            + './RunTests' 
-            + ' -project ' + '"' + projectdir + path.sep + projectname + '"'
-            + ' -run ' + '"' + tests + '"'
-            + ' -environment ' + environment;
+            script = 'cd ' + '"' + productpath + '"' + '\n'
+                + './RunTests'
+                + ' -project ' + '"' + projectdir + path.sep + projectname + '"'
+                + ' -run ' + '"' + tests + '"'
+                + ' -environment ' + environment;
         }
 
         const junitDir = core.getInput('junitDir', false);
 
         if (junitDir) {
-            script = script.concat(' -junitDir '+'"'+ junitDir +'"');
+            script = script.concat(' -junitDir ' + '"' + junitDir + '"');
         }
 
-		// var tests ='';
+        // var tests ='';
         // if(configtype == 'simple'){
         //     const projectdir = core.getInput('projectDir', true);
         //     var projectname = core.getInput('projectName', true);
         //     const environment = core.getInput('environment', true);
         //     tests = core.getInput('tests', true);
         //     const junitDir = core.getInput('junitDir', false);
-                 
+
         //     if(!projectname.includes('.ghp')){
         //         projectname = projectname+'.ghp';
         //     }
-            
+
         //     //Script formation
         //     script = 'cd ' + '"'+productpath+'"' + '\n'
         //                 + './RunTests' 
         //                 + ' -project ' + '"' + projectdir + path.sep + projectname + '"'
         //                 + ' -run ' + '"' + tests + '"'
         //                 + ' -environment ' + environment;
-            
-		// 	if(junitDir===null){
+
+        // 	if(junitDir===null){
         //       script = script.concat(' -junitDir '+'"'+ junitDir +'"');
         //     }
         // } else{
         //     const paramfile = core.getInput('parameterfile', true);
         //     script = 'cd ' + '"'+productpath+'"' + '\n'
-		// 			+ './RunTests' 
-		// 			+ ' -parameterFile ' + '"' + paramfile + '"'
+        // 			+ './RunTests' 
+        // 			+ ' -parameterFile ' + '"' + paramfile + '"'
         // }
 
         let tempDir = os.tmpdir();
