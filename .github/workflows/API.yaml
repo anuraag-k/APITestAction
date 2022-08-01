@@ -10,7 +10,6 @@ jobs:
          - name: HCL OneTest API
            uses: anuraag-k/APITestAction@main
            with:
-            configType: simple
             productPath: C:\Program Files\HCL\OneTest-API
             projectDir: D:\HCL\api\Project2\
             projectName: Project2.ghp
