@@ -12,48 +12,24 @@ This action enables you to run HCL OneTest API tests.
 ```yaml
 name: HCL OneTest API
 
-on:
-    workflow_dispatch:
-        inputs:
-            configType:
-                description: 'Configuration Type'
-                required: true
-            productPath:
-                description: 'Product Path'
-                required: true
-            projectDir:
-                description: 'Project Directory'
-                required: true
-            projectName:
-                description: 'Project Name'
-                required: true
-            environment:
-                description: 'Environment'
-                required: true
-            tests:
-                description: 'Test(s) to run'
-                required: true
-            junitDir:
-                description: 'JunitDir'
-                required: false
+on: workflow_dispatch
 
 jobs:
-
-    WebUI-Action:
+    API-Action:
         runs-on: self-hosted
         name: HCL OneTest API
         steps:
          - name: HCL OneTest API
-           uses: SonaHJ/APIAction@main
+           uses: anuraag-k/APITestAction@main
            with:
-            configType: '${{ github.event.inputs.configType }}'
-            productPath: '${{ github.event.inputs.productPath }}'
-            projectDir: '${{ github.event.inputs.projectDir }}'
-            projectName: '${{ github.event.inputs.projectName }}'
-            environment: '${{ github.event.inputs.environment }}'
-            tests: '${{ github.event.inputs.tests }}'
-            junitDir: '${{ github.event.inputs.junitDir }}'
-
+            productPath: 
+            projectDir: 
+            projectName: 
+            environment: 
+            tests: 
+            parameterFile: 
+            junitDir: 
+            
 ```
 4. Push the new yml file into the main branch
 5. The you will have to configure agent:
@@ -66,29 +42,30 @@ jobs:
 
 ## Inputs
 
-### `configType`
-
-**Required** Type of the test to execute
-
 ### `productPath`
 
-**Required** The fully qualified path to the HCL OneTest API application. This path must exist on the agent.
+**Required** The fully qualified path to the HCL OneTest API application. This path must exist on the runner machine.
 
 ### `projectDir`
 
-**Required** Fully qualified path to the HCL OneTest API project directory.
+**Required** Fully qualified path to the HCL OneTest API project directory. This value will be ignored if parameterFile field is used.
 
 ### `projectName`
 
-**Required** The name of the API test project.
+**Required** The name of the API test project. This value will be ignored if parameterFile field is used.
 
 ### `environment`
 
-**Required** The API Test environment to use for this execution.
+**Required** The API Test environment to use for this execution. This value will be ignored if parameterFile field is used.
 
 ### `tests`
 
-**Required** Semicolon separated list of tests/suites to run.
+**Required** Semicolon separated list of tests/suites to run. This value will be ignored if parameterFile field is used.
+
+### `parameterFile`
+
+**Optional** The full path to a parameter file that contains project, environment, and run arguments for one or more tests.
 
 ### `junitDir`
+
 **Optional** Specify the folder to export the JUnit reports to.
