@@ -10,9 +10,9 @@ jobs:
          - name: HCL OneTest API
            uses: anuraag-k/APITestAction@main
            with:
-            projectDir: D:\HCL\api\Project3
-            projectName: Project3.ghp
-            environment: LP1-AP-51760790
+            projectDir:
+            projectName: 
+            environment: 
             tests: Test1
-            parameterFile: 
+            parameterFile: ‪C:\Users\anuraag.k\Downloads\api.txt
             junitDir: 
