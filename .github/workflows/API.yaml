@@ -14,5 +14,5 @@ jobs:
             projectName: 
             environment: 
             tests: 
-            parameterFile: C:\Users\anuraag.k\Downloads\api.txt
-            junitDir: D:\reports
+            parameterFile: 
+            junitDir: 
