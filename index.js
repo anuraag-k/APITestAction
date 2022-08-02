@@ -11,8 +11,8 @@ const main = async () => {
          HCL OneTest API parameters.
          */
         var script = '';
-        const productpath = core.getInput('productPath', true);
-        const paramfile = core.getInput('parameterFile', false);
+        const productpath = getProductPath();
+        const paramfile = core.getInput('parameterFile', { required: false });
 
         if (paramfile) {
             script = 'cd ' + '"' + productpath + '"' + '\n'
@@ -21,10 +21,10 @@ const main = async () => {
         }
 
         else {
-            const projectdir = core.getInput('projectDir', true);
-            var projectname = core.getInput('projectName', true);
-            const environment = core.getInput('environment', true);
-            var tests = core.getInput('tests', true);
+            const projectdir = core.getInput('projectDir', { required: true });
+            var projectname = core.getInput('projectName', { required: true });
+            const environment = core.getInput('environment', { required: true });
+            var tests = core.getInput('tests', { required: true });
 
             if (!projectname.includes('.ghp')) {
                 projectname = projectname + '.ghp';
@@ -37,7 +37,7 @@ const main = async () => {
                 + ' -environment ' + environment;
         }
 
-        const junitDir = core.getInput('junitDir', false);
+        const junitDir = core.getInput('junitDir', { required: false });
 
         if (junitDir) {
             script = script.concat(' -junitDir ' + '"' + junitDir + '"');
@@ -75,6 +75,34 @@ const main = async () => {
     catch (error) {
         core.setFailed(error.message);
     }
+}
+
+function getProductPath() {
+    var productPathVal = process.env.INTEGRATION_TESTER_HOME;
+    var isValid = isValidEnvVar(productPathVal);
+    if (isValid) {
+        var stats = fs.statSync(productPathVal);
+        isValid = stats.isDirectory();
+    }
+
+    if (!isValid) {
+        throw new Error("Could not find a valid INTEGRATION_TESTER_HOME environment variable pointing to installation directory.");
+    }
+    return productPathVal;
+}
+
+function isValidEnvVar(productPathVal) {
+    var valid = true;
+    if (productPathVal == null) {
+        valid = false;
+    }
+    else {
+        productPathVal = productPathVal.toLowerCase();
+        if (productPathVal.includes("*") || productPathVal.includes("?") ||
+            productPathVal.startsWith("del ") || productPathVal.startsWith("rm "))
+            valid = false;
+    }
+    return valid;
 }
 
 // Call the main function to run the action
