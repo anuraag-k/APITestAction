@@ -1,10 +1,6 @@
 name: 'HCL OneTest API'
 description: 'HCL OneTest API Action to execute WebUI test from GitHub Action.'
 inputs:
-  productPath:
-    description: 'The fully qualified path to HCL OneTest API application. This path must exist on the runner machine.'
-    required: true
-
   projectDir:
     description: 'The fully qualified path to HCL OneTest API project directory. This value will be ignored if parameterFile field is used.'
     required: true
