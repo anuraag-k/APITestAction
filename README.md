@@ -22,7 +22,6 @@ jobs:
          - name: HCL OneTest API
            uses: anuraag-k/APITestAction@main
            with:
-            productPath: 
             projectDir: 
             projectName: 
             environment: 
@@ -42,10 +41,6 @@ jobs:
 
 ## Inputs
 
-### `productPath`
-
-**Required** The fully qualified path to the HCL OneTest API application. This path must exist on the runner machine.
-
 ### `projectDir`
 
 **Required** Fully qualified path to the HCL OneTest API project directory. This value will be ignored if parameterFile field is used.
@@ -64,7 +59,7 @@ jobs:
 
 ### `parameterFile`
 
-**Optional** The full path to a parameter file that contains project, environment, and run arguments for one or more tests.
+**Optional** Fully qualified path to a parameter file that contains project, environment, and run arguments for one or more tests.
 
 ### `junitDir`
 
