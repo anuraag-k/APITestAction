@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 const core = require('@actions/core');
 const github = require('@actions/github');
 const path = require("path");
@@ -44,7 +45,7 @@ const main = async () => {
         }
 
         let tempDir = os.tmpdir();
-        let filePath = path.join(tempDir, tests + '.ps1');
+        let filePath = path.join(tempDir, uuidv4() + '.ps1');
         await fs.writeFileSync(
             filePath,
             script,
