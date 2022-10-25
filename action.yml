@@ -1,5 +1,8 @@
-name: 'HCL OneTest API'
-description: 'HCL OneTest API Action to execute WebUI test from GitHub Action.'
+name: 'HCL OneTest API GitHub Action'
+description: 'Execute HCL OneTest API based tests and suites from GitHub Actions workflows.'
+branding:
+  icon: 'check-square'
+  color: 'purple'
 inputs:
   projectDir:
     description: 'The fully qualified path to HCL OneTest API project directory. This value will be ignored if parameterFile field is used.'
