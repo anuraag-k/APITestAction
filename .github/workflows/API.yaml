@@ -10,7 +10,7 @@ jobs:
          - name: HCL OneTest API
            uses: anuraag-k/APITestAction@main
            with:
-            projectDir: D:\HCL\api
+            projectDir: D:\HCL\api\NEW
             projectName: NEW
             environment: LP1-AP-51760790
             tests: Folder1\Test
