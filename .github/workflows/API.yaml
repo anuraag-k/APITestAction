@@ -13,6 +13,6 @@ jobs:
             projectDir: D:\HCL\api\NEW
             projectName: NEW
             environment: LP1-AP-51760790
-            tests: Folder1\Test;Folder1\Test2
+            tests: Folder1\Log;Folder1\Test2
             parameterFile: 
             junitDir: 
